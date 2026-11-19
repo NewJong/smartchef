@@ -27,7 +27,7 @@ export const fetchData = async (
         throw new Error(`Error: ${response.status}`);
       }
       const end = Date.now() - start;
-      console.log("Response time:", end, "мс");
+      console.log("Response time:", end, "ms");
       const data = await response.json();
       // console.log("Data from the server:", data);
       return data;

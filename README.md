@@ -1,24 +1,24 @@
 # SmartChef
 
-Мобільний застосунок-помічник для кухні: каталог страв з інгредієнтами, улюблені рецепти, кошик продуктів, статистика харчування та AI-генератор рецептів з того, що є під рукою.
+A mobile cooking assistant: a catalog of dishes with ingredients, favorite recipes, a grocery cart, nutrition statistics and an AI recipe generator that cooks up something from what you already have.
 
-## Можливості
+## Features
 
-- **Каталог страв** — перегляд за категоріями, пошук за назвою, склад і нутрієнти кожної страви
-- **Улюблені** — збереження страв у профілі
-- **Кошик інгредієнтів** — додавання продуктів зі страв, зміна кількості
-- **AI-рецепти** — генерація рецепту з інгредієнтів кошика (Groq, Llama 3); відповідає мовою запиту
-- **Статистика** — облік з’їдених страв за обраний період, графіки
-- **Акаунт** — реєстрація та вхід (JWT), фото профілю
+- **Dish catalog** — browse by category, search by name, see ingredients and nutrients of every dish
+- **Favorites** — save dishes to your profile
+- **Ingredient cart** — add products from dishes, change quantities
+- **AI recipes** — generate a recipe from the ingredients in your cart (Groq, Llama 3); replies in the language of your request
+- **Statistics** — track eaten dishes over a selected period, with charts
+- **Account** — sign up and log in (JWT), profile photo
 
-## Стек
+## Tech stack
 
-| Частина | Технології |
+| Part | Technologies |
 |---|---|
 | `frontend/` | React Native, Expo (Expo Router), TypeScript, Jest |
 | `backend/` | Go, Fiber, GORM, SQLite, JWT, Swagger |
 
-## Запуск
+## Getting started
 
 ### Backend
 
@@ -28,25 +28,25 @@ cp .env.example .env
 go run .
 ```
 
-API стартує на `http://localhost:8888`, документація — `http://localhost:8888/swagger/`. База SQLite (`foodapp.db`) створюється автоматично.
+The API starts on `http://localhost:8888`, docs at `http://localhost:8888/swagger/`. The SQLite database (`foodapp.db`) is created automatically.
 
 ### Frontend
 
 ```bash
 cd frontend
-cp .env.example .env   # вкажіть свій ключ Groq
+cp .env.example .env   # put your Groq API key here
 npm install
 npx expo start
 ```
 
-## API (основне)
+## API overview
 
-| Метод | Шлях | Опис |
+| Method | Path | Description |
 |---|---|---|
-| POST | `/users/register`, `/users/login` | Реєстрація, вхід |
-| GET | `/users/profile` | Профіль користувача |
-| GET | `/dishes`, `/dishes/category?q=`, `/dishes/search?q=` | Страви |
-| GET | `/dishes-ingredients/:dish_id` | Інгредієнти страви |
-| POST/GET/DELETE | `/favorites-dishes/*` | Улюблені |
-| POST/GET/PUT/DELETE | `/cart/*` | Кошик |
-| GET/POST/DELETE | `/statistics/*` | Статистика харчування |
+| POST | `/users/register`, `/users/login` | Sign up, log in |
+| GET | `/users/profile` | Current user profile |
+| GET | `/dishes`, `/dishes/category?q=`, `/dishes/search?q=` | Dishes |
+| GET | `/dishes-ingredients/:dish_id` | Ingredients of a dish |
+| POST/GET/DELETE | `/favorites-dishes/*` | Favorites |
+| POST/GET/PUT/DELETE | `/cart/*` | Cart |
+| GET/POST/DELETE | `/statistics/*` | Nutrition statistics |

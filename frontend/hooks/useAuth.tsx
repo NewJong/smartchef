@@ -57,7 +57,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
             setProfileImage(convertBase64ToImage(parsedUser.profile_image));
           }
         } catch (error) {
-          console.error('Ошибка парсинга user:', error);
+          console.error('Failed to parse user:', error);
         }
       }
     };
